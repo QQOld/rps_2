@@ -3,7 +3,6 @@ package Base.DAO;
 import Base.Model.User;
 import java.sql.*;
 import java.util.ArrayList;
-import java.util.Scanner;
 
 public class UserDAO {
 

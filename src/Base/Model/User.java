@@ -1,7 +1,5 @@
 package Base.Model;
 
-import java.sql.Time;
-
 public class User {
     private int id;
     private int age;
