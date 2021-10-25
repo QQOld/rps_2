@@ -7,6 +7,28 @@ import java.util.Scanner;
 
 public class UserDAO {
 
+    public static User getUser(int id) {
+        User user = new User();
+        try (Connection conn = Dao.getConn()) {
+            PreparedStatement preparedStatement = conn.prepareStatement("SELECT * FROM Users WHERE Id = ?");
+            preparedStatement.setInt(1, id);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()) {
+                user.setId(resultSet.getInt("Id"));
+                user.setFirstName(resultSet.getString("FirstName"));
+                user.setLastName(resultSet.getString("LastName"));
+                user.setAge(resultSet.getInt("Age"));
+                user.setSex(resultSet.getString("Sex"));
+                user.setPhone(resultSet.getString("Phone"));
+                user.setRegdate(resultSet.getString("RegDate"));
+            }
+            preparedStatement.close();
+        } catch (SQLException ex) {
+            ex.printStackTrace();
+        }
+        return user;
+    }
+
     public static ArrayList<User> getAllUsers() {
         ArrayList<User> Users = new ArrayList<User>();
         try (Connection conn = Dao.getConn()) {

@@ -21,6 +21,8 @@ public class Main {
         user1.setAge(25);
         UserDAO.update((User) users.get(2));
 
+        System.out.println(UserDAO.getUser(3));
+
         for (int i = 0; i < users.size(); i++) {
             System.out.println(users.get(i));
         }
